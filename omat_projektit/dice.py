@@ -2,30 +2,33 @@
 
 import random
 
-def second_dice_game(number_of_sides):
+def number_of_sides_in_dice(throws,number_of_sides):
     roller = [i for i in range(1, number_of_sides+1)]
     random_choice = random.choice(roller)
-    return random_choice
-
-def results(number_of_throws):
+    print(f" You throwed on your {throws} throw: {random_choice}")
+    all_together.append(random_choice)
+    
+    
+def amount_of_throws(number_of_throws):
     throws = 0
     for i in range(number_of_throws):
         throws = throws + 1
-        numbers=second_dice_game(number_of_sides)
-        all_together.append(numbers)
-        print(f"Your {throws} throw is: {numbers}")
-
-    Sum=sum(all_together)
-    print(f"Here is the sum of all your throws: {Sum}")
+        number_of_sides_in_dice(throws,number_of_sides)
 
 while True:
     all_together = []
     again=input("Type y to begin the game or anything else to exit? ")
+    
     if again == "y":
         number_of_sides=int(input("How many sided dice do you want to throw? "))    
         number_of_throws=int(input("How many times do you want to throw? "))
-        results(number_of_throws)
+        amount_of_throws(number_of_throws)
+        results=sum(all_together)
+        print(f"The sum of all your resulst are {results}")
+        
+
     else:
+        print(f"And here is the sum of all your throws in the game {sum(all_together)}")
         break
     
 

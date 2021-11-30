@@ -15,8 +15,10 @@ def amount_of_throws(number_of_throws):
         throws = throws + 1
         number_of_sides_in_dice(throws,number_of_sides)
 
+all_together = []
+
 while True:
-    all_together = []
+   
     again=input("Type y to begin the game or anything else to exit? ")
     
     if again == "y":
@@ -26,13 +28,13 @@ while True:
         results=sum(all_together)
         print(f"The sum of all your resulst are {results}")
         
+        
 
     else:
-        print(f"And here is the sum of all your throws in the game {sum(all_together)}")
         break
     
 
-
+print(f"And here is the sum of all your throws in the game {sum(all_together)}")
 
 
 

@@ -1,0 +1,11 @@
+screen_width = 800
+frames_animation_characters=4
+screen_height = 600
+size_blocks = 16
+background_color = (230, 240, 240)
+title = "PyAdventure"
+resource_folder = "resources"
+fps = 30
+scale = 2
+speed_animation_walk = 0.2
+first_level = "level1"

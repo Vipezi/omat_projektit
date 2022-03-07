@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 # Create a script that
 # 1. Reads contents of the files users.csv, purchases.csv and purchaseParts.csv
 # 2. Creates a new database called purchases.db
@@ -20,21 +22,58 @@
 # You need to create a function called dropAndCreateTable that accepts the name of the table and table fields in some format. That function needs to drop the table first if it exists (DROP TABLE IF EXISTS tableName) and then needs to create the passed table with the fields given. Note that neither of the DROP TABLE or CREATE TABLE commands work with the ? substitution.
 # You need to create a function called insertData that accepts the name of the table and table data in some format. That function needs to insert the passed data into the given table.
 
+
 import sqlite3
 
-database = "purchase.db"
+
+database = "purchases.db"
 connection = sqlite3.connect(database)
 cursor = connection.cursor()
 
 filenames = ["users.csv" , "purchases.csv", "purchaseParts.csv"]
 
-def dropAndCreateTable(tablename, fields):
-    print("dropandcreate")
 
-def insertData(tableName, data):
-    print("insertdata")
+def dropAndCreateTable(tablename, fields):
+    cursor.execute(f"DROP TABLE IF EXISTS {tablename}")
+    cursor.execute(f"CREATE TABLE {tablename} ({fields})")
+    #print("Dropped the old table if it existed and created the table anew.")
+
+def insertData(file, line):
+    cursor.execute(f"INSERT INTO {file} VALUES ({line})")
+    #print("Inserted data successfully!")
+   
+for file in filenames:
+    content = open(file,'r')
+    lines = content.readlines()
+    file = file[:-4]
+    counter = 0
+    for line in lines:
+        if counter != 0:
+            print(f"Line {counter} added to {file}")
+            insertData(file, line)
+        elif counter == 0:
+            print(f"Dropped if existed and created {file}.")
+            dropAndCreateTable(file,line)
+        counter += 1
+    content.close()
+
+'''for row in cursor.execute("""SELECT * FROM users"""):
+  print(row)'''
+
+join = ("""SELECT * FROM users
+JOIN purchases on users.userId = purchases.userId
+JOIN purchaseParts on purchases.purchaseId = purchaseParts.purchaseId
+ORDER BY users.email ASC;""")
+fetch_it_all=cursor.execute(join)
+for row in fetch_it_all:
+    print(row)
+
+connection.commit()
+connection.close()
 
 # Open the files for reading/loop trough the files one by one
 # name of the file(excluding .csv) is your table name
 # First line of the file? That's your table creation over dropAndCreateTable
 # Any other line of the file? That's data for your table! insertData
+
+

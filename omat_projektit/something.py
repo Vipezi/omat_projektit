@@ -55,32 +55,36 @@ print(result)
 
 """
 
-from typing import DefaultDict
-
 def create_inventory(item):
     for item in item:
         if item in inventory:
             inventory[item] += 1
         else:
-            inventory[item] =1
+            inventory[item] = 1
 
     return inventory
 
-def add_items(list_input):
-    dictionary = dict.fromkeys(list_input,'pass')
-    return dictionary
+def add_items(inventory,input):
+    from collections import Counter
+    inventory=Counter([inventory])
 
 def decrement_items(inventory,removed_item_list):
     inventory.pop(removed_item_list,None)
     return inventory
 
 inventory = {}
-item = input("Give me items to my inventory: ").split()
-
+item = input("Give items to inventory: ").split()
 create_inventory(item)
-
-#print(inventory)
-
+while True:
+    print(inventory)
+    more_items = input("Add item to inventory: (When you want to end type 'quit')")
+    if "quit" in more_items:
+        print(inventory)
+        break
+    else:
+        add_items(inventory,more_items)
+    
+"""
 list_input = [item for item in input("Give me a list: ").split()]
 
 removed_item_list = [item for item in input("What to remove from list? ").split()]
@@ -90,3 +94,5 @@ inventory=create_inventory(dictionary)
 decrement_items(inventory,removed_item_list)
 
 print(inventory)
+
+"""

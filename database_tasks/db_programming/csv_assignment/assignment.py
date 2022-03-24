@@ -36,11 +36,13 @@ filenames = ["users.csv" , "purchases.csv", "purchaseParts.csv"]
 def dropAndCreateTable(tablename, fields):
     cursor.execute(f"DROP TABLE IF EXISTS {tablename}")
     cursor.execute(f"CREATE TABLE {tablename} ({fields})")
-    #print("Dropped the old table if it existed and created the table anew.")
+    print(".........")
+    print(f"Dropped old {tablename} if it existed and created a new table.")
 
 def insertData(file, line):
     cursor.execute(f"INSERT INTO {file} VALUES ({line})")
-    #print("Inserted data successfully!")
+    print("---------")
+    print(f"Inserted data to {file} {line} successfully!")
    
 for file in filenames:
     content = open(file,'r')
@@ -49,17 +51,18 @@ for file in filenames:
     counter = 0
     for line in lines:
         if counter != 0:
-            print(f"Line {counter} added to {file}")
+            #print(f"Line {counter} added to {file}")
             insertData(file, line)
         elif counter == 0:
-            print(f"Dropped if existed and created {file}.")
+            #print(f"Dropped if existed and created {file}.")
             dropAndCreateTable(file,line)
         counter += 1
     content.close()
 
-'''for row in cursor.execute("""SELECT * FROM users"""):
-  print(row)'''
-
+'''
+for row in cursor.execute("""SELECT * FROM users,purchaseParts, purchases"""):
+  print(row)
+'''
 join = ("""SELECT * FROM users
 JOIN purchases on users.userId = purchases.userId
 JOIN purchaseParts on purchases.purchaseId = purchaseParts.purchaseId

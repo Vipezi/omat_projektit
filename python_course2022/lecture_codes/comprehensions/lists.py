@@ -84,4 +84,49 @@ def nth_lowest(number,alist):
 # Sort the numbers in ascending order into three lists inside another list. First list with single digits, second with double digits and third with three digits.
 # Sum the numbers and see which has the highest sum, one, two or three digit numbers.
 
+import random
+def roll():
+    lists = [[],[],[]]
+    while True:
+        exit = random.randrange(0,99)
+        if exit == 99:
+            break
+        else:
+            chance = random.randint(0,99)
+            if chance < 85:
+                single = random.randint(0,9)
+                lists[0].append(single)
+            elif chance == 99:
+                lists[2].append(100)
+            else:
+                double = random.randint(10,99)
+                lists[1].append(double)
+    sorted_list = [sorted(i) for i in lists]
+    the_list = [sum(lists[0]), sum(lists[1]), sum(lists[2])]
+    print(sorted_list) 
+    print(the_list)
 
+
+##################################################################################
+
+# original author: anonymous student
+# I the author grant the use of this code for teaching: yes, if my name isn't used.
+
+#Write a function called check_password, that takes in a string and checks if it is a valid password. Returns Boolean True if valid.
+#For a password to be valid it needs to:
+#Has at least 1 capital and non capital letter.
+#Has at least 1 number
+#Has at least 1 special character from: [#$@]
+#Is between 8 and 18 characters long
+#Hint: Use RegEx module and remember passwords don't contain spaces.
+
+import re
+
+def check_password(string):
+    reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,18}$"
+    pat = re.compile(reg)
+    mat = re.search(pat, string)
+    if mat:
+        return True
+    else:
+        return False

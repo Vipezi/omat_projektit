@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-from database import session, Game, User, UserGame
+from todo_assignment.database import session, Game, User, UserGame
 
 # Using SQLAlchemy, find the game with the name Dota 2.
 #  Store the result in a variable game. Print the name of the found game.
@@ -46,7 +46,9 @@ session.add(Game(
     ))
 session.commit()
 
-# Create a list that contains the User objects described below. Name the variable as newUsers. Insert the user objects into the database using the session.add_all function.
+# Create a list that contains the User objects described below. 
+# Name the variable as newUsers. 
+# Insert the user objects into the database using the session.add_all function.
 # User 1
 # name: Nanny Nameless
 # password: 123
@@ -62,7 +64,8 @@ newUsers = session.add_all([
     ])
 session.commit()
 
-# Create and insert a User and a Game described below. Associate the newly added Game for the User. Use SQLAlchemy.
+# Create and insert a User and a Game described below. 
+# Associate the newly added Game for the User. Use SQLAlchemy.
 # User
 # name: Nanny Nameless
 # password: 123
@@ -104,7 +107,8 @@ for game in allGames:
 
 session.commit()
 
-# Using SQLAlchemy, find a user with the name Tomas Train. Remove game with the name Dota 2 from that user. 
+# Using SQLAlchemy, find a user with the name Tomas Train. 
+# Remove game with the name Dota 2 from that user. 
 # Do NOT directly use the UserGame object.
 
 user = session.query(User).filter( User.name == "Tomas Train").first()
@@ -129,7 +133,8 @@ game.price = 33
 session.commit()
 
 # Create a function addNewGame that accepts the parameters name, price.
-# Make the function insert a new game with the given parameters into the database using SQLAlchemy.
+# Make the function insert a new game
+# with the given parameters into the database using SQLAlchemy.
 
 def addNewGame(name, price):
     newGame = Game( name = name, price = price)

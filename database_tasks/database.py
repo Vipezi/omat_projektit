@@ -1,9 +1,7 @@
-#! /usr/bin/python3
-
-from enum import unique
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, create_engine, ForeignKey
+from sqlalchemy import Column, Integer, String, create_engine, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 Base = declarative_base()
 
 # Create engine
@@ -13,25 +11,33 @@ engine = create_engine('sqlite:///todo.db', echo = False)
 from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
-# Users
-class User(Base):
-  __tablename__ = "users"
-  userId = Column(Integer, primary_key = True)
-  userName = Column(String, nullable = False)
-  password = Column(String, nullable = False)
-  items = relationship("Item", secondary = "useritems", back_populates = "users", cascade= "all, delete")
-# , cascade = "all, delete, delete-orphan")
+# ---
+# TABLES
+# ---
+
 # Items
 class Item(Base):
   __tablename__ = "items"
-  itemId = Column(Integer, primary_key = True)
-  name = Column(String, nullable = False)
-  users = relationship("User", secondary="useritems", back_populates ="items")
+  itemId = Column(Integer, primary_key = True, autoincrement = True)
+  userId = Column(Integer, ForeignKey('users.userId'))
+  name = Column(String, nullable=False)
+  users = relationship('User', back_populates = 'items')
 
-class UserItem(Base):
-  __tablename__ = "useritems"
-  userId = Column(Integer, ForeignKey("users.userId"), primary_key=True)
-  itemId = Column(Integer, ForeignKey("items.itemId"), primary_key=True)
+class User(Base):
+  __tablename__ = "users"
+  userId = Column(Integer, primary_key = True, autoincrement = True)
+  username = Column(String, nullable=False)
+  password = Column(String, nullable=False)
+  items = relationship('Item', back_populates = 'users', cascade = 'all, delete, delete-orphan')
+  logIns =relationship("LogIn", back_populates="users", cascade = "all, delete, delete-orphan")
+
+
+class LogIn(Base):
+  __tablename__ = 'logIns'
+  logId = Column(Integer, primary_key = True, autoincrement = True)
+  userId = Column(Integer, ForeignKey('users.userId'))
+  loggedAt = Column(DateTime(timezone=True), server_default=func.now())
+  users =relationship("User", back_populates="logIns")
 
 # Create the tables
 Base.metadata.create_all(engine)

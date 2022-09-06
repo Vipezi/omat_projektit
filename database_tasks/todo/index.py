@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
 import sys
-from database import Item, session
+from todo_assignment.database import Item, session
 
 items = []
 currentItemId = 0

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+	<link name="link_guy">
+		<inertial>
+			<mass value="4.6"/>
+			<inertia ixx="19.87583333333333" ixy="0.0" ixz="0.0" iyy="11.319833333333333" iyz="0.0" izz="30.091666666666665"/>
+		</inertial>
+		<visual>
+			<geometry>
+				<box size="7.1 5.3 1.2"/>
+			</geometry>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="7.1 5.3 1.2"/>
+			</geometry>
+		</collision>
+	</link>
+	<link name="link_girl">
+		<inertial>
+			<mass value="4.0"/>
+			<inertia ixx="116.33333333333333" ixy="0.0" ixz="0.0" iyy="116.33333333333333" iyz="0.0" izz="200.0"/>
+		</inertial>
+		<visual>
+			<geometry>
+				<cylinder length="7.0" radius="10.0"/>
+			</geometry>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder length="7.0" radius="10.0"/>
+			</geometry>
+		</collision>
+	</link>
+</Root>

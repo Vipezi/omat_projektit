@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-class zoo:
+class Zoo:
     def __init__(self, species, age, name):
         self.species = species
         self.age = age
@@ -16,7 +16,7 @@ class zoo:
         print(f"Name of the animal is: {self.name}")
 
 if __name__ == "__main__":
-    zebra1 = zoo("zebra", 74, "Arnold")
+    zebra1 = Zoo("zebra", 74, "Arnold")
 
     print(zebra1.name)
 

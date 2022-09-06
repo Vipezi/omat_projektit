@@ -1,0 +1,16 @@
+    <link name="link_leg1">
+      <inertial>
+        <mass value="1.1"/>
+        <inertia ixx="28.8" ixy="0.0" ixz="0.0" iyy="28.8" iyz="0.0" izz="28.8"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <sphere radius="2.2"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <sphere radius="2.2"/>
+        </geometry>
+      </collision>
+    </link>

@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-from database import session, Car, Invoice, Person, PersonCar
+from todo_assignment.database import session, Car, Invoice, Person, PersonCar
 
 # INSERT FUNCTIONALITY
 

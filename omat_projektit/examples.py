@@ -1,10 +1,11 @@
 #! /usr/bin/python3
 
-"""
-from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
-url = 'http://www.vanityfair.com/society/2014/06/monica-lewinsky-humiliation-culture'
+from bs4 import BeautifulSoup
+
+user_input = input("What do you want to know about the Wheel of Time?")
+url = f"https://wot.fandom.com/wiki/{user_input}?so=search"
 page = urlopen(url)
 html = page.read().decode("utf-8")
 soup = BeautifulSoup(html, "html.parser")
@@ -24,9 +25,9 @@ chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
 text = '\n'.join(chunk for chunk in chunks if chunk)
 
 print(text)
-"""
 
-"""import nltk   
+"""
+import nltk   
 from urllib.request import urlopen
 
 url = "http://news.bbc.co.uk/2/hi/health/2284783.stm"    
@@ -34,36 +35,38 @@ html = urlopen(url).read()
 raw = nltk.clean_html(html)  
 print(raw)
 
-"""
-#import time
+
+import time
+import webdriver
 
 # start web browser
-#browser=webdriver.Chrome()
+browser=webdriver.Chrome()
 
 # get source code
-#browser.get("https://en.wikipedia.org")
-#html = browser.page_source
-#time.sleep(2)
-#print(html)
+browser.get("https://en.wikipedia.org")
+html = browser.page_source
+time.sleep(2)
+print(html)
 
 # close web browser
-#browser.close()
+browser.close()
 
-#url=('http://www.vanityfair.com/society/2014/06/monica-lewinsky-humiliation-culture')
+url=('http://www.vanityfair.com/society/2014/06/monica-lewinsky-humiliation-culture')
 
-#page = urlopen(url)
-#print(page)
-#html_bytes = page.read()
-#html = html_bytes.decode("utf-8")
+page = urlopen(url)
+print(page)
+html_bytes = page.read()
+html = html_bytes.decode("utf-8")
 
-#print(html)
+print(html)
 
-#everything=re.findall()
-#print(everything)
+import re
+everything=re.findall()
+print(everything)
 
 
 #soup = BeautifulSoup(site)
 #print(soup.prettify())
-
+"""
 
 

@@ -21,7 +21,7 @@ class Car(Base):
   manufacturer = Column(String, nullable = False)
   model = Column(String, nullable = False)
   invoices = relationship("Invoice", back_populates = "cars", cascade = "all, delete, delete-orphan")
-  persons = relationship("Person", secondary = "personcars", back_populates = "cars", cascade = "all, delete-orphan", single_parent = True )
+  persons = relationship("Person", secondary = "personcars", back_populates = "cars", cascade = "all, delete, delete-orphan", single_parent = True)
 
 # Model for a car invoice
 class Invoice(Base):

@@ -1,0 +1,22 @@
+{
+    "users": [
+        
+        {
+        "username" : "Heli",
+        "age" : 24,
+        "loggedIn" : false,
+        "images" : {
+            "fullscreenimage" : "...",
+            "avatar" : "..."
+
+            }
+        },
+        {
+        "username" : "Ville",
+        "age" : 28,
+        "loggedIn" : true
+        }
+    ]
+}
+
+

@@ -1,0 +1,18 @@
+{
+    "locations" : [
+        {
+            "id" : 1,
+            "name" : "Railway station",
+            "description" : "..."
+        }
+    ],
+    "questlines" : [
+        {
+        "id" : 1,
+        "text" : "Hello there human",
+        "quiz" : {
+            
+        }
+        }
+    ]
+}

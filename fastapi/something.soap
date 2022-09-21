@@ -1,0 +1,32 @@
+
+#### REST ####
+http://127.0.0.1:8000/api/game/start
+http://127.0.0.1:8000/api/game/end
+http://127.0.0.1:8000/api/game/shuffle
+http://127.0.0.1:8000/api/game/user
+
+/game/start:
+{
+    "started": true
+}
+
+/game/end:
+{
+    "Game has ended" : true
+}
+
+####GRAPHQL####
+http://127.0.0.1:8000/api/GRAPHQL
+
+{
+    human(id: "1000")
+    name
+    height
+}
+
+{
+    set.human(id:"1000"){
+        name:"Test Guy"
+        height
+    }
+}

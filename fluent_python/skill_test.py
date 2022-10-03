@@ -1,9 +1,5 @@
 #! /usr/bin/python3
 
-
-from unicodedata import name
-
-
 class CustomerInfo:
     def __init__(self, name):
         self.name = name

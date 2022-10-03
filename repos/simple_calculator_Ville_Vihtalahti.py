@@ -43,6 +43,7 @@ def divider(x,y):
     except ValueError as e:
         print(e)
 
+
 def main():
     while True:
         print("Welcome to the calculator app.")

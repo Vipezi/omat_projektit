@@ -1,0 +1,10 @@
+You work at a company that works with projects. 
+You develop the software to track all the projects. 
+You need to keep(save) the initial budget valor. 
+When the project reaches 0 in money you need to remove it
+from the company's list of active projects and put it in disabled projects.
+
+You also need to add to the project the employees
+and their positions total salary for the duration of the project.
+{project : name, total_budget : float ,  current_budget
+get : float, employees {name: string , salary: float , position:  }, }
